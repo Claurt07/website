@@ -120,6 +120,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.i18n",
                 "wagtail.contrib.settings.context_processors.settings",
+                "hot_osm.context_processors.hot_ui",
             ],
         },
     },
@@ -348,3 +349,8 @@ sentry_sdk.init(
     # Profiles will be automatically collected while
     # there is an active span.
 )
+
+
+# HOT UI shared components (loaded from jsDelivr in base.html)
+HOT_UI_VERSION = "3"
+WEBAWESOME_VERSION = "3.11.0"
