@@ -4,22 +4,22 @@
 
 :root {
     /* Colors */
-    --hot-red: #D73F3F;
-    --hot-burgundy: #6D2021;
-    --hot-navy: #20365B;
-    --hot-navy-grey: #2C3038;
-    --hot-dark-grey: #68707F;
-    --hot-slate-grey: #929DB3;
-    --hot-light-grey: #E1E0E0;
-    --hot-off-white: #F0EFEF;
-    --hot-barely-not-white: #FBFBFB;
-    --hot-white: #FFFFFF;
-    --hot-black: #000000;
-    --hot-off-black: #101010;
+    --hot-red: var(--hot-color-red-600, #D73F3F);
+    --hot-navy: var(--hot-color-blue-800, #20365B);
+    --hot-navy-grey: var(--hot-color-gray-950, #2C3038);
+    --hot-light-grey: var(--hot-color-gray-100, #E1E0E0);
+    --hot-white: var(--hot-color-neutral-0, #FFFFFF);
+    --hot-black: var(--hot-color-neutral-1000, #000000);
+    --hot-burgundy: var(--hot-color-rose-700, #6D2021);
+    --hot-dark-grey: var(--hot-color-gray-600, #68707F);
+    --hot-slate-grey: var(--hot-color-blue-200, #929DB3);
+    --hot-off-white: var(--hot-color-gray-50, #F0EFEF);
+    --hot-barely-not-white: var(--hot-color-gray-50, #FBFBFB);
+    --hot-off-black: var(--hot-color-neutral-1000, #101010);
 
     /* Font Family */
-    --font-barlow: "Barlow Condensed", sans-serif;
-    --font-archivo: "Archivo", sans-serif;
+    --font-barlow: var(--hot-font-sans-variant-condensed, "Barlow Condensed", sans-serif);
+    --font-archivo: var(--hot-font-sans, "Archivo", sans-serif);
     font-family: var(--font-archivo);
 
     /* Font Size */
