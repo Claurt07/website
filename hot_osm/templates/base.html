@@ -5,7 +5,7 @@
 {% is_debug as debug %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="wa-theme-default wa-palette-hotosm">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -25,6 +25,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {# Force all links in the live preview panel to be opened in a new tab #}
         {% if request.in_preview_panel %}<base target="_blank">{% endif %}
+        {# HOT UI: WebAwesome theme + HOT design tokens (must come before the site's own CSS) #}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@awesome.me/webawesome@{{ WA }}/dist-cdn/styles/themes/default.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hotosm/ui@{{ HOT_UI }}/dist/style-core.css">
+        <script type="importmap">
+            { "imports": {
+                "@awesome.me/webawesome/dist/components/": "https://cdn.jsdelivr.net/npm/@awesome.me/webawesome@{{ WA }}/dist-cdn/components/"
+            } }
+        </script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@hotosm/ui@{{ HOT_UI }}/dist/webawesome-all.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@hotosm/ui@{{ HOT_UI }}/dist/hotosm-ui.js"></script>
         {# Global stylesheets #}
         {% if debug %}
             {% compress css %}
