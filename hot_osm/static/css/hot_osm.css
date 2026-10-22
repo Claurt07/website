@@ -478,3 +478,8 @@ wa-spinner.hot-spinner {
     font-size: 1.5rem;
     --indicator-color: var(--hot-red);
 }
+
+/* ── HOT UI search dialog ───────────────────────────────────── */
+wa-dialog.hot-search-dialog {
+    --width: 36rem;
+}
