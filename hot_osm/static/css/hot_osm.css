@@ -483,3 +483,9 @@ wa-spinner.hot-spinner {
 wa-dialog.hot-search-dialog {
     --width: 36rem;
 }
+
+/* ── Search results: highlighted keyword ───────────────────── */
+mark.hot-search-highlight {
+    background-color: transparent;   /* browsers default <mark> to yellow */
+    color: var(--hot-red);
+}

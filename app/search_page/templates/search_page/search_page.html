@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags search_tags %}
 {% block body_class %}
     template-searchpage
 {% endblock body_class %}
@@ -23,7 +23,7 @@
                     {% for result in results %}
                         <div class="grid gap-2">
                             <h2 class="text-h4 font-semibold">
-                                <a href="{{result.url}}" class="hover:text-hot-red transition-colors">{{result.title}}</a>
+                                <a href="{{result.url}}" class="hover:text-hot-red transition-colors">{{result.title|highlight:keyword}}</a>
                             </h2>
                             
                             <div class="text-sm text-gray-600 font-medium flex flex-wrap items-center gap-2">
@@ -57,10 +57,10 @@
                             
                             {% if result.specific.intro %}
                                 <div class="mt-1">
-                                    {{result.specific.intro|richtext|striptags|truncatewords:30}}
+                                    {{result.specific.intro|richtext|striptags|truncatewords:30|highlight:keyword}}
                                 </div>
                             {% elif result.search_description %}
-                                <p class="mt-1">{{result.search_description}}</p>
+                                <p class="mt-1">{{result.search_description|highlight:keyword}}</p>
                             {% endif %}
                         </div>
                     {% endfor %}
