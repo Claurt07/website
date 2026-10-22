@@ -470,3 +470,11 @@ wa-button.hot-button-on-dark::part(base):active {
     background-color: var(--hot-off-white);
     color: var(--hot-burgundy);
 }
+
+/* ── HOT UI spinner ─────────────────────────────────────────── */
+
+/* Red to match the brand buttons (HOT UI's default spinner colour is the grey brand colour) */
+wa-spinner.hot-spinner {
+    font-size: 1.5rem;
+    --indicator-color: var(--hot-red);
+}
