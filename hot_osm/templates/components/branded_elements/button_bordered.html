@@ -2,6 +2,6 @@
 HOT UI outlined button for dark/coloured backgrounds. Same params as button.html.
 {% endcomment %}
 <wa-button appearance="outlined"
-           size="{{ size|default:'large' }}"
+           size="{{ size|default:'l' }}"
            {% if linkurl %}href="{% include 'ui/components/PageOrLinkHrefText.html' with linkurl=linkurl %}"{% endif %}
            class="hot-button-on-dark {{ classes }}">{{ text }}</wa-button>

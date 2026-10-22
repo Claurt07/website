@@ -5,10 +5,10 @@ Params:
   classes   - layout only (margins, width). Tailwind can't style inside the component.
   linkurl   - optional: a Wagtail link value; renders the button as a link (see step 4b)
   variant   - optional: brand (default), neutral, danger, success, warning
-  size      - optional: small, medium, large (default)
+  size      - optional: s, m, l (default)
 {% endcomment %}
 <wa-button variant="{{ variant|default:'brand' }}"
            appearance="accent"
-           size="{{ size|default:'large' }}"
+           size="{{ size|default:'l' }}"
            {% if linkurl %}href="{% include 'ui/components/PageOrLinkHrefText.html' with linkurl=linkurl %}"{% endif %}
            class="{{ classes }}">{{ text }}</wa-button>
