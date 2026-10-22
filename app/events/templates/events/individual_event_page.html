@@ -80,8 +80,8 @@
                         {{page.rsvp_description|richtext}}
 
                         {% if page.rsvp_link %}
-                            <a href="{{page.rsvp_link}}" class="[&_button]:mt-4">
-                                {% include "components/branded_elements/button.html" with text=page.get_parent.specific.rsvp_button_text %}
+                            <a href="{{page.rsvp_link}}">
+                                {% include "components/branded_elements/button.html" with text=page.get_parent.specific.rsvp_button_text classes="mt-4" %}
                             </a>
                         {% endif %}
                     </div>

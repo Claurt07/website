@@ -422,3 +422,51 @@
 .oa-wh-topic:last-child .oa-wh-topic-chevron {
     display: none;
 }
+
+
+/* ── HOT UI buttons ─────────────────────────────────────────── */
+
+/* Label size for the site's button partials only (not wa-buttons inside other components) */
+wa-button[variant="brand"]::part(label),
+wa-button.hot-button-on-dark::part(label) {
+    font-size: var(--font-size-intro);
+}
+
+/* Brand buttons stay HOT red (deliberate: HOT UI's default brand colour is grey).
+   Only colours are overridden; shape, size and spacing come from HOT UI. */
+wa-button[variant="brand"] {
+    --wa-color-focus: var(--hot-red);
+}
+
+wa-button[variant="brand"]::part(base) {
+    background-color: var(--hot-red);
+    border-color: var(--hot-red);
+    color: var(--hot-white);
+}
+
+wa-button[variant="brand"]::part(base):hover {
+    background-color: var(--hot-color-red-800, #B83032);
+    border-color: var(--hot-color-red-800, #B83032);
+}
+
+wa-button[variant="brand"]::part(base):active {
+    background-color: var(--hot-burgundy);
+    border-color: var(--hot-burgundy);
+}
+
+/* Outlined button on dark/coloured backgrounds (button_bordered.html) */
+wa-button.hot-button-on-dark::part(base) {
+    color: var(--hot-white);
+    border-color: var(--hot-white);
+    background-color: transparent;
+}
+
+wa-button.hot-button-on-dark::part(base):hover {
+    background-color: var(--hot-white);
+    color: var(--hot-red);
+}
+
+wa-button.hot-button-on-dark::part(base):active {
+    background-color: var(--hot-off-white);
+    color: var(--hot-burgundy);
+}

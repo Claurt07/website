@@ -1,5 +1,14 @@
-<!-- Resolution: Added 'tabindex=0' to the element to fix an issue where the focus ring was not appearing in Safari. This makes the element focusable and ensures the focus ring is displayed. -->
-<button tabindex="0"
-        class="font-medium font-archivo transition duration-75 py-1 text-intro bg-hot-red border-2 border-hot-red text-hot-white px-hot-3 hover:bg-hot-burgundy hover:border-hot-burgundy focus:bg-transparent focus:text-hot-red focus:ring-2 focus:ring-hot-red focus:ring-inset {{ classes }}">
-    {{ text }}
-</button>
+{% comment %}
+HOT UI primary button (https://github.com/hotosm/ui).
+Params:
+  text      - button label (required)
+  classes   - layout only (margins, width). Tailwind can't style inside the component.
+  linkurl   - optional: a Wagtail link value; renders the button as a link (see step 4b)
+  variant   - optional: brand (default), neutral, danger, success, warning
+  size      - optional: small, medium, large (default)
+{% endcomment %}
+<wa-button variant="{{ variant|default:'brand' }}"
+           appearance="accent"
+           size="{{ size|default:'large' }}"
+           {% if linkurl %}href="{% include 'ui/components/PageOrLinkHrefText.html' with linkurl=linkurl %}"{% endif %}
+           class="{{ classes }}">{{ text }}</wa-button>
