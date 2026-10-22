@@ -489,3 +489,19 @@ mark.hot-search-highlight {
     background-color: transparent;   /* browsers default <mark> to yellow */
     color: var(--hot-red);
 }
+
+/* ── HOT UI consent banner ──────────────────────────────────── */
+hot-consent {
+    /* Red accept button, matching the site's brand buttons */
+    --wa-color-brand-fill-loud: var(--hot-red);
+    --wa-color-brand-on-loud: var(--hot-white);
+
+    /* Bolder title (also makes the two buttons bold) */
+    --hot-font-weight-semibold: 700;
+
+    /* Hide the grey stripe along the top and the thin grey outline */
+    --hot-color-primary-100: transparent;
+    --hot-color-primary-500: transparent;
+    --hot-color-primary-600: transparent;
+    --hot-color-primary-700: transparent;
+}

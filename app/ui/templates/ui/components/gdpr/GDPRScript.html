@@ -19,21 +19,41 @@
         g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
     })();
 
-    const form = document.getElementById('gdpr-banner-form');
-    const agreeButton = document.getElementById('gdpr-banner-agree-button');
-    const disagreeButton = document.getElementById('gdpr-banner-disagree-button');
+    const consent = document.getElementById('gdpr-consent');
 
-    const closeForm = () => {
-        form.style.display = 'none';
-        localStorage.setItem("optout-closed", true)
+    // Visitors who already answered the old banner shouldn't be asked again
+    if (localStorage.getItem("optout-closed")) {
+        consent.removeAttribute('is-open');
     }
 
-    if(localStorage.getItem("optout-closed")) {
-        closeForm();
-    }
+    // Set the title as a property once the component is ready (see GDPRBanner.html)
+    customElements.whenDefined('hot-consent').then(async () => {
+        consent.title = consent.dataset.title;
 
-    agreeButton.onclick = () => {_paq.push(['rememberConsentGiven']); window.clarity('consentv2', {ad_Storage: "granted",analytics_Storage: "granted"}); closeForm();}
-    disagreeButton.onclick = () => {_paq.push(['forgetConsentGiven']); window.clarity('consentv2', {ad_Storage: "denied",analytics_Storage: "denied"}); closeForm();}
+        // WORKAROUND (remove once hotosm/ui can hide the icon): the shield icon doesn't
+        // display but still reserves space on the left, pushing the content off-centre.
+        // Hide it from inside the component. If hotosm/ui renames the icon's class,
+        // this simply stops applying and the banner is off-centre again, nothing breaks.
+        try {
+            await consent.updateComplete;
+            const sheet = new CSSStyleSheet();
+            sheet.replaceSync('.consent-icon { display: none; }');
+            consent.shadowRoot.adoptedStyleSheets = [...consent.shadowRoot.adoptedStyleSheets, sheet];
+        } catch (e) {
+            // Older browsers: leave the banner as it is
+        }
+    });
+
+    // Pass the visitor's choice on to Matomo and Clarity, as before
+    consent.addEventListener('agree', () => {
+        _paq.push(['rememberConsentGiven']);
+        window.clarity('consentv2', {ad_Storage: "granted", analytics_Storage: "granted"});
+    });
+
+    consent.addEventListener('disagree', () => {
+        _paq.push(['forgetConsentGiven']);
+        window.clarity('consentv2', {ad_Storage: "denied", analytics_Storage: "denied"});
+    });
 </script>
 
 <script type="text/javascript">
